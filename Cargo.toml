@@ -1,0 +1,52 @@
+[package]
+name = "weirdnet-alerts"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+description = "Node health alerts for Weirdnet: weirdnet-rules rule packs over observations, dedupe and recovery notices, SMTP, webhook and weirdnet-push sinks with dry runs, route, disk and GPU probes, and weirdnet-backends engine events."
+authors = ["m3talsmith <m3talsmith@gmail.com>"]
+license = "BSD-3-Clause"
+repository = "https://github.com/WeirdBrains/weirdnet-alerts"
+documentation = "https://docs.rs/weirdnet-alerts"
+readme = "README.md"
+keywords = ["alerts", "monitoring", "smtp", "webhook", "weirdnet"]
+categories = ["network-programming"]
+include = ["src/**", "README.md", "CHANGELOG.md", "LICENSE"]
+
+[features]
+default = []
+# Wake the owner's devices through weirdnet-push (its HTTPS client).
+push = ["dep:weirdnet-push"]
+# weirdnet-backends supervisor events as observations, and a monitor loop.
+backends = ["dep:weirdnet-backends"]
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["std", "clock"] }
+futures = "0.3"
+lettre = { version = "0.11", default-features = false, features = ["builder", "smtp-transport", "tokio1", "tokio1-rustls", "ring", "webpki-roots", "hostname"] }
+# Webhooks go through hyper-rustls with ring (like lettre), not reqwest's rustls feature, which
+# pulls in the aws-lc C build that doesn't cross-build for the BSDs.
+http-body-util = "0.1"
+hyper = { version = "1", default-features = false, features = ["client", "http1"] }
+hyper-rustls = { version = "0.27", default-features = false, features = ["http1", "tls12", "ring", "webpki-tokio"] }
+hyper-util = { version = "0.1", default-features = false, features = ["client-legacy", "http1", "tokio"] }
+rustls = { version = "0.23", default-features = false, features = ["ring", "std", "tls12"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["process", "time", "sync", "macros", "rt", "net"] }
+tracing = "0.1"
+weirdnet-rules = "=0.1.0"
+
+weirdnet-backends = { version = "0.1.0", optional = true }
+weirdnet-push = { version = "0.1.0", optional = true, default-features = false, features = ["client"] }
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[dev-dependencies]
+tempfile = "3"
+tokio = { version = "1", features = ["process", "time", "sync", "macros", "rt", "rt-multi-thread", "net", "io-util"] }
+toml = "0.9"
+
+[package.metadata.docs.rs]
+all-features = true
