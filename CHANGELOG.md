@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-11-19
+
 ### Added
 
 - `Alerter`: `weirdnet-rules` rule specs over `Observation`s with `fail`, `ok` and `event` actions, per-key dedupe with a repeat interval, and recovery notices.
