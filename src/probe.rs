@@ -92,7 +92,7 @@ mod tests {
     fn route_states() {
         let wired = "1.1.1.1 via 192.168.1.1 dev eth0 src 192.168.1.20 uid 1000\n    cache\n";
         assert_eq!(classify_route(wired, |_| false).fields, json!({"state": "ok", "dev": "eth0"}));
-        let wifi = "1.1.1.1 via 10.0.0.1 dev wlP9s9 src 10.0.0.5 uid 1000";
+        let wifi = "1.1.1.1 via 10.0.0.1 dev wlp3s0 src 10.0.0.5 uid 1000";
         assert_eq!(classify_route(wifi, |_| false).fields["state"], "degraded");
         let usb_wifi = "1.1.1.1 via 10.0.0.1 dev wlx00c0ca src 10.0.0.5";
         assert_eq!(classify_route(usb_wifi, |_| false).fields["state"], "degraded");
