@@ -2709,9 +2709,9 @@ dependencies = [
 
 [[package]]
 name = "weirdnet-rules"
-version = "0.1.0"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "11ddc00986aa04c4bc6026425af5c619d4aba01c3bb18595a1f7af204744e779"
+checksum = "998798622ddf9d6af16729d4325fb1a078a1f5a737755eeab3b0e8c3e01783e1"
 dependencies = [
  "chrono",
  "serde",
