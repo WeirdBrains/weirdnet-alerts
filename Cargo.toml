@@ -1,6 +1,6 @@
 [package]
 name = "weirdnet-alerts"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 rust-version = "1.99"
 description = "Node health alerts for Weirdnet: weirdnet-rules rule packs over observations, dedupe and recovery notices, SMTP, webhook and weirdnet-push sinks with dry runs, route, disk and GPU probes, and weirdnet-backends engine events."
