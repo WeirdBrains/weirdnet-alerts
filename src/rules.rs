@@ -58,6 +58,8 @@ pub fn default_rules(t: &Thresholds) -> Vec<AlertRule> {
         ),
         rule("engine.load_failed", vec![], fail("engine.{model}", "{model} on {host} failed to load: {why}")),
         rule("engine.ready", vec![], ok("engine.{model}", "{model} on {host} is serving again")),
+        // A model removed at run time (backends 0.2.1 and later) has nothing left to alert on.
+        rule("engine.removed", vec![], ok("engine.{model}", "{model} on {host} was removed")),
         rule(
             "engine.crashed",
             vec![],

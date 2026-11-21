@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Breaking: the `backends` feature takes `weirdnet-backends` 0.2 or 0.3 (on `weirdnet-agent` 0.5) instead of 0.1, so apps on agent 0.5 get one copy of each.
+
+### Added
+
+- `default_rules`: a model removed at run time (`engine.removed`) clears its engine alert.
+
 ## [0.1.0] - 2026-11-19
 
 ### Added

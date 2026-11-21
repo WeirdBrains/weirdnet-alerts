@@ -73,6 +73,12 @@ mod tests {
         assert_eq!(r[0].title, "qwen on node-a is in a crash loop (5 crashes); restarts stopped until it is loaded again with force");
         let ready: SupervisorEvent = serde_json::from_value(serde_json::json!({"kind": "ready", "model": "qwen", "load_secs": 2.5})).unwrap();
         assert_eq!(a.evaluate(&observation(&ready), t)[0].status, crate::AlertStatus::Recovered);
+        a.evaluate(&obs, t);
+        // `SupervisorEvent::Removed` (backends 0.2.1) as `observation` makes it.
+        let removed = Observation::new("engine.removed", serde_json::json!({"kind": "removed", "model": "qwen"}));
+        let r = a.evaluate(&removed, t);
+        assert_eq!(r.len(), 1);
+        assert_eq!((&r[0].status, r[0].title.as_str()), (&crate::AlertStatus::Recovered, "qwen on node-a was removed"));
     }
 
     #[tokio::test]
