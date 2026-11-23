@@ -2,6 +2,14 @@
 
 Running notes for [weirdnet-alerts](https://github.com/WeirdBrains/weirdnet-alerts), newest first.
 
+## 2026-11-23: weirdnet-backends 0.4 (0.2.2)
+
+What changed: the `backends` feature takes `weirdnet-backends = ">=0.2, <0.5"`, so apps on backends 0.4 (LoRA adapters) can use `engine::monitor` again (Ymir carried a copy meanwhile). No code changes: `Supervisor::subscribe` and `SupervisorEvent` are the same in 0.4.
+
+Checks run: fmt, clippy `-D warnings --all-features`, tests `--all-features` (15), `cargo doc -D warnings`, against backends 0.4.0.
+
+Not tested: nothing beyond the above; the monitor only forwards events.
+
 ## 2026-11-21: v0.2.1, public-content patch release
 
 - What changed: v0.2.1 republishes the 0.2 line with the public-content rules applied (Weird Brains LLC as the copyright holder, m3talsmith as the author, no machine details), on top of `70580b2`. No code or API changes. Its exact weirdnet-rules pin moves to the republished 0.1.1.

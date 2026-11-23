@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- The `backends` feature accepts weirdnet-backends 0.4 (LoRA adapters) as well as 0.2 and 0.3: `weirdnet-backends = ">=0.2, <0.5"`. No API changes; adapter add and remove events become `engine.added` and `engine.removed` like models.
+
 ## [0.2.1] - 2026-11-21
 
 ### Changed
