@@ -2,6 +2,10 @@
 
 Running notes for [weirdnet-alerts](https://github.com/WeirdBrains/weirdnet-alerts), newest first.
 
+## 2026-11-23: released 0.2.2
+
+What changed: Released with `scripts/weirdnet_release.py` (approved by Michael, 2026-11-23). Release commit [`7b2c302`](https://github.com/WeirdBrains/weirdnet-alerts/commit/7b2c30220935e11de96cfc0dd1d52a336e1a5d0d), tag [`v0.2.2`](https://github.com/WeirdBrains/weirdnet-alerts/releases/tag/v0.2.2), on [crates.io](https://crates.io/crates/weirdnet-alerts/0.2.2) and [docs.rs](https://docs.rs/weirdnet-alerts/0.2.2). See the entry below and [CHANGELOG.md](CHANGELOG.md).
+
 ## 2026-11-23: weirdnet-backends 0.4 (0.2.2)
 
 What changed: the `backends` feature takes `weirdnet-backends = ">=0.2, <0.5"`, so apps on backends 0.4 (LoRA adapters) can use `engine::monitor` again (Ymir carried a copy meanwhile). No code changes: `Supervisor::subscribe` and `SupervisorEvent` are the same in 0.4.
